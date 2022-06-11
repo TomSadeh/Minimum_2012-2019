@@ -12,8 +12,8 @@ def my_weights(w):
 
 # Importing a file with the addresses and a file with data on minimum wages.
 
-file_names = pd.read_csv(r'C:\Users\dtsj8\OneDrive\Documents\Work\Working Files\File Names.csv', index_col = 'Year')
-min_wage_by_year = pd.read_csv(r'C:\Users\dtsj8\OneDrive\Documents\Work\Below Min\min_wage_by_year.csv')
+file_names = pd.read_csv('File Names.csv', index_col = 'Year')
+min_wage_by_year = pd.read_csv('min_wage_by_year.csv')
 
 # Defining a dictionary with the analysis period.
 
