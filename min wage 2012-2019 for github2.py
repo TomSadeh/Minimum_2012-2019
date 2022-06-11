@@ -96,10 +96,13 @@ for year in all_prat['s_seker'].drop_duplicates().sort_values():
     
     mask_hours = (temp['sh_shavua'] > 40) & (temp['hourly'].between(temp['min_wage'] * 1.05, temp['min_wage'] * 1.15))
     
-    # Calculating the absolute number and the ratio of minimum earners, by using the filters and summing the weights as per LAMAS instrcutions. 
+    # Creating a binary variable for below or at minimum wage.
     
     temp['below_or_min'] = 0
     temp.loc[mask_min_wage | mask_hours, 'below_or_min'] = 1
+    
+    # Calculating the absolute number and the ratio of minimum earners, by using the filters and summing the weights as per LAMAS instrcutions. 
+    
     results.loc[year, 'minimum'] = temp.loc[mask_min_wage | mask_hours, 'weight'].sum()
     results.loc[year, 'minimum ratio'] = np.average(temp['below_or_min'], weights = temp['weight']) * 100
     
