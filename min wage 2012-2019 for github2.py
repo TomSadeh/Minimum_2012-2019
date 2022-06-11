@@ -12,7 +12,7 @@ def my_weights(w):
 
 # Importing a file with the addresses and a file with data on minimum wages.
 
-file_names = pd.read_csv('File Names.csv', index_col = 'Year')
+file_names = pd.read_csv('file_names.csv', index_col = 'year')
 min_wage_by_year = pd.read_csv('min_wage_by_year.csv')
 
 # Defining a dictionary with the analysis period.
@@ -31,7 +31,7 @@ min_wage_by_year['quarter'] = min_wage_by_year['quarter'].str.split(',')
 
 # The loop that concats the different years to a single DataFrame.
 
-for year, folder, prat_file in zip(np.arange(period['start'], period['end'] + 1), file_names.loc[period['start']:period['end'], 'Folder Address'], file_names.loc[period['start']:period['end'], 'Prat']):
+for year, folder, prat_file in zip(np.arange(period['start'], period['end'] + 1), file_names.loc[period['start']:period['end'], 'folder_address'], file_names.loc[period['start']:period['end'], 'prat']):
     prat = pd.read_csv(r'G:\My Drive\k_data\CBS Households Expenditures Survey' + '\\' + folder + '\\' + prat_file + '.csv')
     
     # Making all the columns lower-cased and renaming the weights column.
