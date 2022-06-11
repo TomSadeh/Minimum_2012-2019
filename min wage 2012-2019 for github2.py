@@ -29,10 +29,14 @@ all_prat = pd.DataFrame()
 
 min_wage_by_year['quarter'] = min_wage_by_year['quarter'].str.split(',')
 
+# Creating a variable with for the main folder address. Enter yours here. 
+
+base_address = r''
+
 # The loop that concats the different years to a single DataFrame.
 
 for year, folder, prat_file in zip(np.arange(period['start'], period['end'] + 1), file_names.loc[period['start']:period['end'], 'folder_address'], file_names.loc[period['start']:period['end'], 'prat']):
-    prat = pd.read_csv(r'G:\My Drive\k_data\CBS Households Expenditures Survey' + '\\' + folder + '\\' + prat_file + '.csv')
+    prat = pd.read_csv(base_address + '\\' + folder + '\\' + prat_file + '.csv')
     
     # Making all the columns lower-cased and renaming the weights column.
     
